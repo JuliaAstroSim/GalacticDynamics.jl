@@ -1,0 +1,10 @@
+name = "GalacticDynamics"
+uuid = "e1cedaea-7e6b-49d3-904f-57c7be8cf25a"
+authors = ["islent <leoislent@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+PrecompileTools = "aea7be01-6a6a-4083-8856-8a6e6704d82a"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+Unitful = "1986cc42-f94f-5a68-af5c-568840ba703d"
+UnitfulAstro = "6112ee07-acf9-5e0f-b108-d242c714bf9f"

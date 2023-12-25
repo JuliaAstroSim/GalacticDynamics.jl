@@ -17,6 +17,8 @@ include("models/Isochrone.jl")
 include("models/Jaffe.jl")
 include("models/Hernquist.jl")
 include("models/NFW.jl")
+include("models/Kuzmin.jl")
+include("models/Logarithmic.jl")
 
 include("precompile.jl")
 

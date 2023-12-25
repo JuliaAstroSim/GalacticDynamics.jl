@@ -8,7 +8,7 @@ Returns profiles `(ρ_bulge(R,z), ρ_discs(R,z), ρ_gas(R,z), ρ_halo(r))`
 function milkyway_zhu2023how()
     C = Constant(uAstro)
 
-    ρ_bulge = (R,z)->density(R, z, 0.5, 9.5e10u"Msun/kpc^3", 0.075u"kpc", C.G, 2.1u"kpc", MilkyWayBulge())
+    ρ_bulge = (R,z)->density(R, z, 0.5, 9.5e10u"Msun/kpc^3", 0.075u"kpc", 1.8, 2.1u"kpc", MilkyWayBulge())
 
     # stellar discs
     ρ_discs = (R,z)->density(R, z, 1003.12u"Msun/pc^2", 2.42u"kpc", 0.3u"kpc", MilkyWayDiscs())+

@@ -23,8 +23,11 @@ include("models/Hernquist.jl")
 include("models/NFW.jl")
 include("models/Kuzmin.jl")
 include("models/Logarithmic.jl")
+include("models/Zhao.jl")
+include("models/MigamotoNagai.jl")
 
-include("MilkyWay/MilkyWay.jl")
+include("galaxies/MilkyWay.jl")
+include("galaxies/M31.jl")
 
 include("params/milkyway_zhu2023how.jl")
 

@@ -5,7 +5,13 @@ struct Isochrone <: GalacticModel end
 struct Zhao <: GalacticModel end
 struct Jaffe <: GalacticModel end
 struct Hernquist <: GalacticModel end
+"generalized NFW"
 struct NFW <: GalacticModel end
+"cored NFW"
+struct cNFW <: GalacticModel end
+struct Burkert <: GalacticModel end
+"β-model"
+struct BetaModel <: GalacticModel end
 
 struct TwoPower <: GalacticModel end
 struct Kuzmin <: GalacticModel end

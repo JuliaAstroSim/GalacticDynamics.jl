@@ -5,6 +5,8 @@ using PrecompileTools
 using Unitful, UnitfulAstro
 using PhysicalParticles
 
+import Base: length, iterate
+
 export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, TwoPower, Kuzmin, Zhao,
     MigamotoNagai, Logarithmic, MestelDisk, ExponentialDisk, ThickDisk,
     Burkert, BetaModel, cNFW

@@ -1,4 +1,8 @@
 abstract type GalacticModel end
+@inline length(p::T) where T <: GalacticModel = 1
+@inline iterate(p::T) where T <: GalacticModel = (p,nothing)
+@inline iterate(p::T,st) where T <: GalacticModel = nothing
+
 struct PointMass <: GalacticModel end
 struct Plummer <: GalacticModel end
 struct Isochrone <: GalacticModel end

@@ -6,8 +6,3 @@ abstract type GalacticModel end
 abstract type NFWModel <: GalacticModel end
 abstract type SersicModel <: GalacticModel end
 
-abstract type MilkyWay <: GalacticModel end
-struct MilkyWayBulge <: MilkyWay end
-struct MilkyWayDiscs <: MilkyWay end
-struct MilkyWayGases <: MilkyWay end
-struct MilkyWayHalo <: MilkyWay end

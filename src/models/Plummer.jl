@@ -1,13 +1,19 @@
+struct Plummer <: GalacticModel
+    M
+    b
+end
+
+
 """
 $(TYPEDSIGNATURES)
 """
-function potential(r, b, M, G, ::Plummer)
-    return -(G*M)/sqrt(r^2+b^2)
+function potential(model::Plummer, G, r)
+    return -(G*model.M)/sqrt(r^2 + model.b^2)
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function density(r, b, M, ::Plummer)
-    return 3*M/(4π*b^3)/(1+r^2/b^2)^2.5
+function density(model::Plummer, r)
+    return 3*model.M/(4π*model.b^3)/(1 + r^2/model.b^2)^2.5
 end

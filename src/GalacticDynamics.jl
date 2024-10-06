@@ -8,8 +8,11 @@ using PhysicalParticles
 import Base: length, iterate
 
 export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, TwoPower, Kuzmin, Zhao,
-    MigamotoNagai, Logarithmic, MestelDisk, ExponentialDisk, ThickDisk,
-    Burkert, BetaModel, cNFW
+    MigamotoNagai, Logarithmic,
+    ExponentialDisc, ExponentialDiscWithHole,
+    Burkert, BetaModel, cNFW,
+    SersicModel, SersicIntensity, SersicDensity,
+    IsothermalSingular, IsothermalNonSingular
 export MilkyWayBulge, MilkyWayDiscs, MilkyWayGases
 export density, potential, mass_interior
 export velocity_circular, velocity_escape, frequency_circular
@@ -30,6 +33,10 @@ include("models/Zhao.jl")
 include("models/MigamotoNagai.jl")
 include("models/Burkert.jl")
 include("models/BetaModel.jl")
+include("models/Sersic.jl")
+include("models/Isothermal.jl")
+include("models/TwoPower.jl")
+include("models/ExponentialDisc.jl")
 
 include("galaxies/MilkyWay.jl")
 include("galaxies/M31.jl")

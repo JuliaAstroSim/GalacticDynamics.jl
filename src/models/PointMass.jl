@@ -1,27 +1,32 @@
+struct PointMass <: GalacticModel
+    M
+end
+
+
 """
 $(TYPEDSIGNATURES)
 """
-function potential(r, M, G, ::PointMass)
-    return -G*M/r
+function potential(model::PointMass, G, r)
+    return -G*model.M/r
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function frequency_circular(r, M, G, ::PointMass)
-    return sqrt(G*M/r^3)
+function frequency_circular(model::PointMass, G, r)
+    return sqrt(G*model.M/r^3)
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function velocity_escape(r, M, G, ::PointMass)
-    return sqrt(2*G*M/r)
+function velocity_escape(model::PointMass, G, r)
+    return sqrt(2*G*model.M/r)
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function velocity_circular(r, M, G, ::PointMass)
-    return sqrt(G*M/r)
+function velocity_circular(model::PointMass, G, r)
+    return sqrt(G*model.M/r)
 end

@@ -1,6 +1,14 @@
+struct Zhao <: GalacticModel
+    ρ₀_halo
+    r_halo
+    α
+    β
+    γ
+end
+
 """
 $(TYPEDSIGNATURES)
 """
-function density(r, ρ₀_h, r_h, α, β, γ, ::Zhao)
-    return ρ₀_h / (r/r_h)^γ * (1 + (r/r_h)^α)^((γ-β)/α)
+function density(model::Zhao, r)
+    return model.ρ₀_halo / (r/model.r_halo)^model.γ * (1 + (r/model.r_halo)^model.α)^((model.γ-model.β)/model.α)
 end

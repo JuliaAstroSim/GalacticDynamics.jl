@@ -1,13 +1,19 @@
-"""
-$(TYPEDSIGNATURES)
-"""
-function potential(R, z, a, b, M, G, ::MigamotoNagai)
-    return -G*M/sqrt(R^2 + (a + sqrt(z^2 + b^2))^2)
+struct MigamotoNagai <: GalacticModel
+    M
+    a
+    b
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function density(R, z, a, b, M, ::MigamotoNagai)
-    return b^2*M / (4π) * (a*R^2 + (a+3*sqrt(z^2+b^2))*(a+sqrt(z^2+b^2))^2) / ((R^2+(a+sqrt(z^2+b^2))^2)^2.5 * (z^2+b^2)^1.5)
+function potential(model::::MigamotoNagai, G, R, z)
+    return -G*model.M/sqrt(R^2 + (model.a + sqrt(z^2 + model.b^2))^2)
+end
+
+"""
+$(TYPEDSIGNATURES)
+"""
+function density(model::::MigamotoNagai, R, z)
+    return model.b^2*model.M / (4π) * (model.a*R^2 + (model.a+3*sqrt(z^2+model.b^2))*(model.a+sqrt(z^2+model.b^2))^2) / ((R^2+(model.a+sqrt(z^2+model.b^2))^2)^2.5 * (z^2+model.b^2)^1.5)
 end

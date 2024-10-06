@@ -1,13 +1,18 @@
-"""
-$(TYPEDSIGNATURES)
-"""
-function mass_interior(r, a, ρ₀, ::Hernquist)
-    return 4π*ρ₀*a^3 * 0.5*(r/a)^2 / (1+r/a)^2
+struct Hernquist <: GalacticModel
+    a
+    ρ₀
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function potential(r, a, ρ₀, G, ::Hernquist)
-    return -4π*G*ρ₀*a^2 / 2 / (1+r/a)
+function mass_interior(model::Hernquist, r)
+    return 4π*model.ρ₀*model.a^3 * 0.5*(r/model.a)^2 / (1+r/model.a)^2
+end
+
+"""
+$(TYPEDSIGNATURES)
+"""
+function potential(model::Hernquist, G, r)
+    return -4π*G*model.ρ₀*model.a^2 / 2 / (1+r/model.a)
 end

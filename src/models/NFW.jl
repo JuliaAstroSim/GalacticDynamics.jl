@@ -1,15 +1,27 @@
-"""
-$(TYPEDSIGNATURES)
-"""
-function mass_interior(r, a, ρ₀, ::NFW)
-    return 4π*ρ₀*a^3 * (ln(1+r/a) - (r/a)/(1+r/a))
+struct NFW <: NFWModel
+    a
+    ρ₀
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function potential(r, a, ρ₀, G, ::NFW)
-    return -4π*G*ρ₀*a^2 * ln(1+a/r)*a/r
+function mass_interior(model::NFW, r)
+    return 4π*model.ρ₀*model.a^3 * (ln(1+r/model.a) - (r/model.a)/(1+r/model.a))
+end
+
+"""
+$(TYPEDSIGNATURES)
+"""
+function potential(model::NFW, G, r)
+    return -4π*G*model.ρ₀*model.a^2 * ln(1+model.a/r)*model.a/r
+end
+
+
+struct gNFW <: NFWModel
+    β
+    ρ₀
+    r₀
 end
 
 """
@@ -17,8 +29,15 @@ $(TYPEDSIGNATURES)
 
 generalized NFW
 """
-function density(r, β, ρ₀, r₀, ::NFW)
-    return ρ₀ / (r/r₀)^β / (1+r/r₀)^(3-β)
+function density(model::gNFW, r)
+    return model.ρ₀ / (r/model.r₀)^model.β / (1+r/model.r₀)^(3-model.β)
+end
+
+
+struct cNFW <: NFWModel
+    b
+    ρ₀
+    r₀
 end
 
 """
@@ -26,6 +45,6 @@ $(TYPEDSIGNATURES)
 
 cored NFW
 """
-function density(r, b, ρ₀, r₀, ::cNFW)
-    return b*ρ₀ / (1+b*r/r₀) / (1+r/r₀)^2
+function density(model::cNFW, r)
+    return model.b*model.ρ₀ / (1+model.b*r/model.r₀) / (1+r/model.r₀)^2
 end

@@ -1,20 +1,25 @@
-"""
-$(TYPEDSIGNATURES)
-"""
-function mass_interior(r, a, ρ₀, ::Jaffe)
-    return 4π*ρ₀*a^3 * (r/a) / (1+r/a)
+struct Jaffe <: GalacticModel
+    a
+    ρ₀
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function potential(r, a, ρ₀, G, ::Jaffe)
-    return -4π*G*ρ₀*a^2 * ln(1+a/r)
+function mass_interior(model::Jaffe, r)
+    return 4π*model.ρ₀*model.a^3 * (r/model.a) / (1+r/model.a)
 end
 
 """
 $(TYPEDSIGNATURES)
 """
-function density(r, a, ρ₀, ::Jaffe)
-    return ρ₀ / (r/a)^2 / (r/a + 1)^2
+function potential(model::Jaffe, G, r)
+    return -4π*G*model.ρ₀*model.a^2 * ln(1+model.a/r)
+end
+
+"""
+$(TYPEDSIGNATURES)
+"""
+function density(model::Jaffe, r)
+    return model.ρ₀ / (r/model.a)^2 / (r/model.a + 1)^2
 end

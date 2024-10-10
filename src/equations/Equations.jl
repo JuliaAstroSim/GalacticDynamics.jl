@@ -1,5 +1,8 @@
+"""
+Spherically symmetric
+"""
 function Poisson_radial(ddu, du, u, p, r)
-	rho = p
+	rho = p[1]
     ddu[1] = -2/r*du[1] + 4π * rho(r)
 end
 

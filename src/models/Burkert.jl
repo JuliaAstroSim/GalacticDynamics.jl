@@ -1,3 +1,7 @@
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct Burkert <: GalacticModel
     ρ₀
     r₀

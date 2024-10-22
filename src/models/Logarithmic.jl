@@ -1,5 +1,6 @@
 """
-
+$(TYPEDEF)
+$(TYPEDFIELDS)
 """
 struct Logarithmic <: GalacticModel
     v0

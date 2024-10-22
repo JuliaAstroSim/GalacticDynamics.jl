@@ -1,16 +1,38 @@
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct IsothermalSingular <: GalacticModel
-
+    sigma
 end
 
+"""
+$(TYPEDSIGNATURES)
+"""
 function density(model::IsothermalSingular)
     
 end
 
-struct IsothermalNonSingular <: GalacticModel
-
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
+struct IsothermalNonsingular <: GalacticModel
+    sigma
 end
 
-function density(model::IsothermalNonSingular)
-    
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
+struct IsothermalModified <: GalacticModel
+    rho_0
+    r_c
 end
 
+"""
+$(TYPEDSIGNATURES)
+"""
+function density(model::IsothermalModified, r)
+    return model.rho_0 / (1 + r^2 / model.r_c^2)
+end

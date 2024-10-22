@@ -1,3 +1,7 @@
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct Zhao <: GalacticModel
     ρ₀_halo
     r_halo

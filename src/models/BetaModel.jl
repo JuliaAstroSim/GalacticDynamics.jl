@@ -1,3 +1,7 @@
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct BetaModel <: GalacticModel
     β
     ρ₀

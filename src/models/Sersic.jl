@@ -1,3 +1,7 @@
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct SersicIntensity <: SersicModel
     I_e
     R_e
@@ -9,12 +13,19 @@ function intensity(model::SersicIntensity, R)
 end
 
 
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct SersicDensity <: SersicModel
     rho_0
     R_e
     n
 end
 
+"""
+$(TYPEDSIGNATURES)
+"""
 function density(model::SersicDensity, R)
     r = R/model.R_e
     @assert 0.6 <= model.n <= 10
@@ -23,6 +34,7 @@ function density(model::SersicDensity, R)
 end
 
 """
+$(TYPEDSIGNATURES)
 Ref: https://en.wikipedia.org/w/index.php?title=S%C3%A9rsic_profile&oldid=1234980354
 """
 function b_n(n)
@@ -31,6 +43,7 @@ function b_n(n)
 end
 
 """
+$(TYPEDSIGNATURES)
 Ref: Terzić, B. & Graham, A. W. Density-potential pairs for spherical stellar systems with Sérsic light profiles and (optional) power-law cores. MNRAS 362, 197–212 (2005).
 """
 function p_n(n)

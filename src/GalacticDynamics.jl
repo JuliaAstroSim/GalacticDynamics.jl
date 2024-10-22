@@ -13,7 +13,7 @@ export MigamotoNagai, Logarithmic
 export ExponentialDisc, ExponentialDiscWithHole
 export Burkert, BetaModel, cNFW
 export SersicModel, SersicIntensity, SersicDensity
-export IsothermalSingular, IsothermalNonSingular
+export IsothermalSingular, IsothermalNonsingular, IsothermalModified
 export Bulge
 
 export density, potential, mass_interior

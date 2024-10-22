@@ -1,6 +1,17 @@
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct NFW <: NFWModel
     a
     ρ₀
+end
+
+"""
+$(TYPEDSIGNATURES)
+"""
+function density(model::NFW, r)
+    return model.ρ₀ / (r/model.a) / (1 + r/model.a)^2
 end
 
 """
@@ -18,6 +29,10 @@ function potential(model::NFW, G, r)
 end
 
 
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct gNFW <: NFWModel
     β
     ρ₀
@@ -34,6 +49,10 @@ function density(model::gNFW, r)
 end
 
 
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+"""
 struct cNFW <: NFWModel
     b
     ρ₀

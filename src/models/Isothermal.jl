@@ -9,8 +9,8 @@ end
 """
 $(TYPEDSIGNATURES)
 """
-function density(model::IsothermalSingular)
-    
+function density(model::IsothermalSingular, r, G)
+    return model.sigma^2 / (2π * G * r^2)
 end
 
 """
@@ -18,6 +18,7 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct IsothermalNonsingular <: GalacticModel
+    rho0
     sigma
 end
 

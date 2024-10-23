@@ -3,8 +3,10 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct NFW <: NFWModel
-    a
+    "central density"
     ρ₀
+    "scale radius"
+    a
 end
 
 """
@@ -34,8 +36,11 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct gNFW <: NFWModel
+    "shape parameter"
     β
+    "central density"
     ρ₀
+    "scale radius"
     r₀
 end
 

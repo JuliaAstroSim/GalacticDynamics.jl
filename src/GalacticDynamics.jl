@@ -8,10 +8,10 @@ using PhysicalParticles
 
 import Base: length, iterate
 
-export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, TwoPower, Kuzmin, Zhao
+export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, cNFW, gNFW, TwoPower, Kuzmin, Zhao
 export MigamotoNagai, Logarithmic
 export ExponentialDisc, ExponentialDiscWithHole
-export Burkert, BetaModel, cNFW
+export Burkert, BetaModel
 export SersicModel, SersicIntensity, SersicDensity
 export IsothermalSingular, IsothermalNonsingular, IsothermalModified
 export Bulge

@@ -27,10 +27,11 @@ end
 $(TYPEDSIGNATURES)
 """
 function density(model::SersicDensity, R)
-    r = R/model.R_e
-    @assert 0.6 <= model.n <= 10
+    # @assert 0.6 <= model.n <= 10
+    # r = R / model.R_e
     # @assert 1e-2 <= r <= 1e3
-    return model.rho_0 * r^(-p_n(model.n)) * exp(-b_n(model.n) * r^(1/model.n))
+    # return model.rho_0 * r^(-p_n(model.n)) * exp(-b_n(model.n) * r^(1/model.n))
+    return model.rho_0 * exp(-b_n(model.n) * ((R/model.R_e)^(1/model.n) - 1))
 end
 
 """

@@ -3,20 +3,23 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct Hernquist <: GalacticModel
-    a
+    "central density"
     ρ₀
+    "scale radius"
+    r_s
 end
+scale_radius(model::Hernquist) = model.r_s
 
 """
 $(TYPEDSIGNATURES)
 """
 function mass_interior(model::Hernquist, r)
-    return 4π*model.ρ₀*model.a^3 * 0.5*(r/model.a)^2 / (1+r/model.a)^2
+    return 4π*model.ρ₀*model.r_s^3 * 0.5*(r/model.r_s)^2 / (1+r/model.r_s)^2
 end
 
 """
 $(TYPEDSIGNATURES)
 """
 function potential(model::Hernquist, G, r)
-    return -4π*G*model.ρ₀*model.a^2 / 2 / (1+r/model.a)
+    return -4π*G*model.ρ₀*model.r_s^2 / 2 / (1+r/model.r_s)
 end

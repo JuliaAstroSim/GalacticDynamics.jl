@@ -3,9 +3,12 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct Burkert <: GalacticModel
+    "central density"
     ρ₀
+    "scale radius"
     r₀
 end
+scale_radius(model::Burkert) = model.r₀
 
 """
 $(TYPEDSIGNATURES)

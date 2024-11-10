@@ -3,8 +3,10 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct TwoPower <: GalacticModel
+    "central density"
     ρ₀
-    a
+    "scale radius"
+    r_s
     α
     β
 end
@@ -13,5 +15,5 @@ end
 $(TYPEDSIGNATURES)
 """
 function density(model::TwoPower, r)
-    return model.ρ₀ / (r/model.a)^model.α / (1+r/model.a)^(model.β-model.α)
+    return model.ρ₀ / (r/model.r_s)^model.α / (1+r/model.r_s)^(model.β-model.α)
 end

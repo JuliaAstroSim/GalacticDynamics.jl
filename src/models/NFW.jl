@@ -6,28 +6,28 @@ struct NFW <: NFWModel
     "central density"
     ρ₀
     "scale radius"
-    a
+    r_s
 end
 
 """
 $(TYPEDSIGNATURES)
 """
 function density(model::NFW, r)
-    return model.ρ₀ / (r/model.a) / (1 + r/model.a)^2
+    return model.ρ₀ / (r/model.r_s) / (1 + r/model.r_s)^2
 end
 
 """
 $(TYPEDSIGNATURES)
 """
 function mass_interior(model::NFW, r)
-    return 4π*model.ρ₀*model.a^3 * (ln(1+r/model.a) - (r/model.a)/(1+r/model.a))
+    return 4π*model.ρ₀*model.r_s^3 * (ln(1+r/model.r_s) - (r/model.r_s)/(1+r/model.r_s))
 end
 
 """
 $(TYPEDSIGNATURES)
 """
 function potential(model::NFW, G, r)
-    return -4π*G*model.ρ₀*model.a^2 * ln(1+model.a/r)*model.a/r
+    return -4π*G*model.ρ₀*model.r_s^2 * ln(1+model.r_s/r)*model.r_s/r
 end
 
 
@@ -41,7 +41,7 @@ struct gNFW <: NFWModel
     "central density"
     ρ₀
     "scale radius"
-    r₀
+    r_s
 end
 
 """
@@ -50,7 +50,7 @@ $(TYPEDSIGNATURES)
 generalized NFW
 """
 function density(model::gNFW, r)
-    return model.ρ₀ / (r/model.r₀)^model.β / (1+r/model.r₀)^(3-model.β)
+    return model.ρ₀ / (r/model.r_s)^model.β / (1+r/model.r_s)^(3-model.β)
 end
 
 
@@ -60,8 +60,10 @@ $(TYPEDFIELDS)
 """
 struct cNFW <: NFWModel
     b
+    "central density"
     ρ₀
-    r₀
+    "scale radius"
+    r_s
 end
 
 """
@@ -70,5 +72,5 @@ $(TYPEDSIGNATURES)
 cored NFW
 """
 function density(model::cNFW, r)
-    return model.b*model.ρ₀ / (1+model.b*r/model.r₀) / (1+r/model.r₀)^2
+    return model.b*model.ρ₀ / (1+model.b*r/model.r_s) / (1+r/model.r_s)^2
 end

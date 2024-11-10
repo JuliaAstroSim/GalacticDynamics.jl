@@ -3,10 +3,14 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct ExponentialDisc <: GalacticModel
+    "central surface density"
     Σ₀
+    "scale radius"
     R_d
+    "scale height"
     z_d
 end
+scale_radius(model::ExponentialDisc) = model.R_d
 
 """
 $(TYPEDSIGNATURES)
@@ -21,12 +25,16 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 """
 struct ExponentialDiscWithHole <: GalacticModel
+    "central surface density"
     Σ₀
+    "scale radius"
     R_d
+    "scale height"
     z_d
     "associated scalelength of the central hole"
     R_m
 end
+scale_radius(model::ExponentialDiscWithHole) = model.R_d
 
 """
 $(TYPEDSIGNATURES)

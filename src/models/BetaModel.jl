@@ -4,13 +4,16 @@ $(TYPEDFIELDS)
 """
 struct BetaModel <: GalacticModel
     β
+    "central density"
     ρ₀
-    r₀
+    "scale radius"
+    r_s
 end
+scale_radius(model::BetaModel) = model.r_s
 
 """
 $(TYPEDSIGNATURES)
 """
 function density(model::BetaModel, r)
-    return model.ρ₀ / (1+(r/model.r₀)^2)^(1.5*model.β)
+    return model.ρ₀ / (1+(r/model.r_s)^2)^(1.5*model.β)
 end

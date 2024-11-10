@@ -12,10 +12,11 @@ export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, cNFW, gNFW, TwoPowe
 export MigamotoNagai, Logarithmic
 export ExponentialDisc, ExponentialDiscWithHole
 export Burkert, BetaModel
-export SersicModel, SersicIntensity, SersicDensity
+export SersicIntensity, SersicDensity, SersicDeprojectedDensity
 export IsothermalSingular, IsothermalNonsingular, IsothermalModified
 export Bulge
 
+export scale_radius
 export density, potential, mass_interior
 export velocity_circular, velocity_escape, frequency_circular
 export milkyway_zhu2023how

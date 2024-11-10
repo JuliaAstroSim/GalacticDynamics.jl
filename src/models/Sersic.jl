@@ -1,37 +1,47 @@
 """
 $(TYPEDEF)
 $(TYPEDFIELDS)
+
+Sersic profile of surface intensity
 """
 struct SersicIntensity <: SersicModel
+    "central surface intensity"
     I_e
-    R_e
+    "scale radius (actually is the half-light radius R_e)"
+    r_s
+    "Sersic index"
     n
 end
 
+scale_radius(model::SersicIntensity) = model.r_s
+
 function intensity(model::SersicIntensity, R)
-    return model.I_e * exp(-b_n(model.n) * ((R / model.R_e)^(1/model.n) - 1))
+    return model.I_e * exp(-b_n(model.n) * ((R / model.r_s)^(1/model.n) - 1))
 end
 
 
 """
 $(TYPEDEF)
 $(TYPEDFIELDS)
+
+Sersic profile of surface density
 """
 struct SersicDensity <: SersicModel
-    rho_0
-    R_e
+    "central density"
+    ρ₀
+    "scale radius (actually is the half-light radius R_e)"
+    r_s
+    "Sersic index"
     n
 end
+
+scale_radius(model::SersicDensity) = model.r_s
 
 """
 $(TYPEDSIGNATURES)
 """
 function density(model::SersicDensity, R)
-    # @assert 0.6 <= model.n <= 10
-    # r = R / model.R_e
-    # @assert 1e-2 <= r <= 1e3
-    # return model.rho_0 * r^(-p_n(model.n)) * exp(-b_n(model.n) * r^(1/model.n))
-    return model.rho_0 * exp(-b_n(model.n) * ((R/model.R_e)^(1/model.n) - 1))
+    return model.ρ₀ * exp(-b_n(model.n) * ((R/model.r_s)^(1/model.n) - 1))
 end
 
 """
@@ -44,9 +54,41 @@ function b_n(n)
 end
 
 """
-$(TYPEDSIGNATURES)
-Ref: Terzić, B. & Graham, A. W. Density-potential pairs for spherical stellar systems with Sérsic light profiles and (optional) power-law cores. MNRAS 362, 197–212 (2005).
+$(TYPEDEF)
+$(TYPEDFIELDS)
+
+Sersic profile of deprojected 3D density
 """
-function p_n(n)
-    return 1 - 0.6097/n + 0.05563/n^2
+struct SersicDeprojectedDensity <: SersicModel
+    "central density"
+    ρ₀
+    "scale radius (actually is the half-light radius R_e)"
+    r_s
+    "Sersic index"
+    n
+    n1
+    n2
+end
+
+scale_radius(model::SersicDeprojectedDensity) = model.r_s
+
+"""
+$(TYPEDSIGNATURES)
+"""
+function density(model::SersicDeprojectedDensity, r)
+    return model.ρ₀ * (r/model.r_s)^(-p_n(model.n, model.n1, model.n2)) * exp(-b_n(model.n) * (r/model.r_s)^(1/model.n))
+end
+
+"""
+$(TYPEDSIGNATURES)
+`p(n) = 1 - n1/n + n2/n^2`
+
+### Ref: Prugniel, P. & Simien, F. The fundamental plane of early-type galaxies: non-homology of the spatial structure. Astron. Astrophys. 321, 111–122 (1997).
+p(n) = 1 - 0.594/n + 0.055/n^2
+
+### Ref: Lima Neto, G. B., Gerbal, D. & Marquez, I. The specific entropy of elliptical galaxies: an explanation for profile-shape distance indicators? Mon. Not. R. Astron. Soc. 309, 481–495 (1999).
+p(n) = 1 - 0.6097/n + 0.05463/n^2
+"""
+function p_n(n, n1, n2)
+    return 1 - n1/n + n2/n^2
 end

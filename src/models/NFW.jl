@@ -8,6 +8,7 @@ struct NFW <: NFWModel
     "scale radius"
     r_s
 end
+scale_radius(model::NFW) = model.r_s
 
 """
 $(TYPEDSIGNATURES)

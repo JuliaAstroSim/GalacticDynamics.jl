@@ -28,5 +28,5 @@ end
 $(TYPEDSIGNATURES)
 """
 function density(model::Jaffe, r)
-    return model.ρ₀ / (r/model.r_s)^2 / (r/model.r_s + 1)^2
+    return model.ρ₀ / (4π) / (r/model.r_s)^2 / (r/model.r_s + 1)^2
 end

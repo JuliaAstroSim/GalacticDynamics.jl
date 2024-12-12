@@ -4,6 +4,7 @@ using DocStringExtensions
 using PrecompileTools
 using Unitful, UnitfulAstro
 using DifferentialEquations
+using SpecialFunctions
 using PhysicalParticles
 
 import Base: length, iterate
@@ -12,7 +13,7 @@ export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, cNFW, gNFW, TwoPowe
 export MigamotoNagai, Logarithmic
 export ExponentialDisc, ExponentialDiscWithHole
 export Burkert, BetaModel
-export SersicIntensity, SersicDensity, SersicDeprojectedDensity
+export SersicIntensity, SersicDensity, SersicDeprojectedDensity, Sersic_3D_central_density, Sersic_3D_total_mass
 export IsothermalSingular, IsothermalNonsingular, IsothermalModified
 export Bulge
 

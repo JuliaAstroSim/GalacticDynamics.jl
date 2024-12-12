@@ -58,6 +58,14 @@ $(TYPEDEF)
 $(TYPEDFIELDS)
 
 Sersic profile of deprojected 3D density
+
+### Ref: Prugniel, P. & Simien, F. The fundamental plane of early-type galaxies: non-homology of the spatial structure. Astron. Astrophys. 321, 111–122 (1997).
+n1 = 0.594
+n2 = 0.055
+
+### Ref: Lima Neto, G. B., Gerbal, D. & Marquez, I. The specific entropy of elliptical galaxies: an explanation for profile-shape distance indicators? Mon. Not. R. Astron. Soc. 309, 481–495 (1999).
+n1 = 0.6097
+n2 = 0.05463
 """
 struct SersicDeprojectedDensity <: SersicModel
     "central density"
@@ -91,4 +99,14 @@ p(n) = 1 - 0.6097/n + 0.05463/n^2
 """
 function p_n(n, n1, n2)
     return 1 - n1/n + n2/n^2
+end
+
+function Sersic_3D_central_density(M_tot, R_e, n, n1, n2)
+    p_index = (3 - p_n(n, n1, n2)) * n
+    return M_tot / (4π * R_e^3 * (n * gamma(p_index)) / b_n(n)^p_index)
+end
+
+function Sersic_3D_total_mass(rho0, R_e, n, n1, n2)
+    p_index = (3 - p_n(n, n1, n2)) * n
+    return 4π * rho0 * R_e^3 * (n * gamma(p_index)) / b_n(n)^p_index
 end

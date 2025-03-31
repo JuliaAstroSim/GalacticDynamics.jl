@@ -15,7 +15,7 @@ UnitfulAstro = "6112ee07-acf9-5e0f-b108-d242c714bf9f"
 
 [compat]
 DifferentialEquations = "7"
-DocStringExtensions = "0.8"
+DocStringExtensions = "0.8, 0.9"
 PhysicalParticles = "1"
 PrecompileTools = "1"
 SpecialFunctions = "2"

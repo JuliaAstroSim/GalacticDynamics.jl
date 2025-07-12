@@ -9,7 +9,7 @@ using PhysicalParticles
 
 import Base: length, iterate
 
-export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, cNFW, gNFW, TwoPower, Kuzmin, Zhao
+export PointMass, Plummer, Isochrone, Jaffe, Hernquist, NFW, cNFW, gNFW, TwoPower, Kuzmin, Zhao, ZhaoQ
 export MigamotoNagai, Logarithmic
 export ExponentialDisc, ExponentialDiscWithHole
 export Burkert, BetaModel

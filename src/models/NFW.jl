@@ -75,3 +75,27 @@ cored NFW
 function density(model::cNFW, r)
     return model.b*model.ρ₀ / (1+model.b*r/model.r_s) / (1+r/model.r_s)^2
 end
+
+"""
+$(TYPEDEF)
+$(TYPEDFIELDS)
+
+Truncated spherical NFW
+"""
+struct tNFW <: NFWModel
+    "central density"
+    ρ₀
+    "scale radius"
+    r_s
+    "truncation radius"
+    r_t
+end
+
+"""
+$(TYPEDSIGNATURES)
+
+Truncated spherical NFW
+"""
+function density(model::tNFW, r)
+    return model.ρ₀ / (r/model.r_s) / (1 + r/model.r_s)^2 * exp(-(r/model.r_s)^2)
+end

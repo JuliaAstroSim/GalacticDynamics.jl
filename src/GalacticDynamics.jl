@@ -3,7 +3,7 @@ module GalacticDynamics
 using DocStringExtensions
 using PrecompileTools
 using Unitful, UnitfulAstro
-using DifferentialEquations
+# using DifferentialEquations
 using SpecialFunctions
 using PhysicalParticles
 
